@@ -194,21 +194,29 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <form>
-                    <div class="mb-3">
-                      <label for="nama" class="form-label">Nama Lengkap</label>
-                      <input type="text" class="form-control" id="nama">
+                <div class="alert alert-success alert-dismissible fade show  d-none" role="alert">
+                    <strong>Terima Kasih!</strong> Pesan anda sudah kami terima.
+                    <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <form name="contactForm">
+                    <div class="form-group mt-3">
+                        <label for="yourname">Name</label>
+                        <input type="text" class="form-control" id="yourname" placeholder="Enter Name" name="Nama">
                     </div>
-                    <div class="mb-3">
-                      <label for="email" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="email">
+                    <div class="form-group mt-3">
+                        <label for="youremail">Email</label>
+                        <input name="Email" type="email" class="form-control" id="youremail" placeholder="Enter email">
                     </div>
-                    <div class="mb-3">
-                        <label for="pesan" class="form-label">Pesan Anda</label>
-                        <textarea class="form-control" id="pesan" rows="3"></textarea>
-                      </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
+                    <div class="form-group mt-3">
+                        <label for="txtArea">Message</label>
+                        <textarea name="Pesan" class="form-control" id="txtArea" rows="3">  </textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2 btn-submit">Submit</button>
+                    <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -244,9 +252,29 @@
   gsap.from('.jumbotron img', { duration: 1, rotateY: 180, opacity: 0 });
   gsap.from('.navbar', { duration: 1.5, y: '-100%', opacity: 0, ease: 'bounce' });
   gsap.from('.display-4', { duration: 1, x: -50, opacity: 0, delay: 0.5, ease: 'back' });
-
 </script>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzVbRTQtFgXIfTR04TcOYBUJLIPgtZYGlG2PBqksSQdFVwrdv-df68TRQvPCWLlLrGdBw/exec'
+  const form = document.forms['contactForm']
+  const btnSubmit = document.querySelector('.btn-submit');
+  const btnLoading = document.querySelector('.btn-loading');
+  const alertDiv = document.querySelector('.alert');
 
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        btnLoading.classList.toggle('d-none');
+        btnSubmit.classList.toggle('d-none');
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then((response) => {
+            btnLoading.classList.toggle('d-none');
+            btnSubmit.classList.toggle('d-none');
+            alertDiv.classList.toggle('d-none');
+            form.reset();
+            console.log('Success!', response);
+          })
+          .catch((error) => console.error('Error!', error.message));
+      });
+</script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
