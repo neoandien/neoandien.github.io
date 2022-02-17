@@ -244,11 +244,13 @@ end my gall -->
   const btnSubmit = document.querySelector('.btn-submit');
   const btnLoading = document.querySelector('.btn-loading');
   const alertDiv = document.querySelector('.alert');
-  const swalALert = Swal.fire(
+  function swalALert() {
+    Swal.fire(
               'Terima Kasih',
               'Pesan Sudah Kami Terima.',
               'success'
             );
+  }
 
       form.addEventListener('submit', (e) => {
         e.preventDefault();
