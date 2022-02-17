@@ -244,6 +244,11 @@ end my gall -->
   const btnSubmit = document.querySelector('.btn-submit');
   const btnLoading = document.querySelector('.btn-loading');
   const alertDiv = document.querySelector('.alert');
+  const swalALert = Swal.fire(
+              'Terima Kasih',
+              'Pesan Sudah Kami Terima.',
+              'success'
+            );
 
       form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -255,18 +260,9 @@ end my gall -->
             btnSubmit.classList.toggle('d-none');
             alertDiv.classList.toggle('d-none');
             form.reset();
-            Swal.fire(
-              'Terima Kasih',
-              'Pesan Sudah Kami Terima.',
-              'success'
-            );
+            swalALert();
             console.log('Success!', response);
           })
-          Swal.fire(
-              'Maaf!',
-              'Pesan Gagal Di Kirim.',
-              'error'
-            );
           .catch((error) => console.error('Error!', error.message));
       });
 </script>
