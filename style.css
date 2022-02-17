@@ -1,6 +1,6 @@
 
 .jumbotron {
-    padding-top: 6rem;
+    padding-top: 10rem;
     background-color: #e2edff;
 }
 
@@ -16,5 +16,9 @@ section {
 
 #gallery .row > * {
     padding:0;
+}
+
+.lead {
+    padding-bottom: 10rem;
 }
 
