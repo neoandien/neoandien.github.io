@@ -255,10 +255,8 @@ end my gall -->
             btnSubmit.classList.toggle('d-none');
             alertDiv.classList.toggle('d-none');
             form.reset();
-            alertSuccess();
             console.log('Success!', response);
           })
-          alertError();
           .catch((error) => console.error('Error!', error.message));
       });
     function alertSuccess(){
