@@ -36,6 +36,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item active">
+                <a class="d-none"  href="#">Home</a>
                 <a class="nav-link"  href="#">Home</a>
               </li>
               <li class="nav-item">
@@ -270,6 +271,45 @@ end my gall -->
 </script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+
+		$(document).ready(function(){
+			$('body').click(function(e){
+				var clicked_class=e.target.getAttribute("class");
+				if(clicked_class==="navbar-toggler"||clicked_class==="navbar-toggler-icon")
+				{
+            //$(".navbar-collapse").toggle();
+        }
+        else if(clicked_class==="nav-link")
+        {
+        	$(".navbar-toggler").click();
+        }
+        else
+        {
+        	if($(".navbar-collapse").hasClass("show")==true)
+        	{
+        		$(".navbar-toggler").click();
+        	}
+        }
+        /*
+        if(clicked_class==="navbar-collapse"||$(e.target).parents(".navbar-collapse").length>0)
+        {
+            $(".navbar-collapse").toggle();
+        }
+        else
+        {
+            if($(".navbar-collapse").hasClass("show")==true)
+            {
+                alert("click");
+                $(".navbar-collapse").toggle();
+            }
+        }
+        */
+    });
+		})
+	
+    </script>
     </body>
 </html>
 
