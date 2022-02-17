@@ -178,10 +178,10 @@ end my gall -->
         </div>
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <div class="alert alert-success alert-dismissible fade show  d-none" role="alert">
+                <!--<div class="alert alert-success alert-dismissible fade show  d-none" role="alert">
                     <strong>Terima Kasih!</strong> Pesan anda sudah kami terima.
                     <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                </div>-->
                 <form name="contactForm">
                     <div class="form-group mt-3">
                         <label for="yourname">Name</label>
@@ -243,7 +243,7 @@ end my gall -->
   const form = document.forms['contactForm']
   const btnSubmit = document.querySelector('.btn-submit');
   const btnLoading = document.querySelector('.btn-loading');
-  const alertDiv = document.querySelector('.alert');
+  //const alertDiv = document.querySelector('.alert');
   function swalALert() {
     Swal.fire(
               'Terima Kasih',
@@ -260,7 +260,7 @@ end my gall -->
           .then((response) => {
             btnLoading.classList.toggle('d-none');
             btnSubmit.classList.toggle('d-none');
-            alertDiv.classList.toggle('d-none');
+            //alertDiv.classList.toggle('d-none');
             form.reset();
             swalALert();
             console.log('Success!', response);
